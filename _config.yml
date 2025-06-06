@@ -82,7 +82,7 @@ defaults:
       layout: "default"
       header_type       : "post"
       #include_on_search : true
-      #include_on_feed   : true
+      include_on_feed   : true
       show_date         : true
       #show_bottomnavs   : true
       #show_sociallinks  : true
