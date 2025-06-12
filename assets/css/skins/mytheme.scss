@@ -15,6 +15,7 @@ $danger: #D42300 !default;
 $dark: #030D11 !default;
 $light: #ebf3f7 !default;
 $white: #ffffff !default;
+$link-hover-color: #f5532c !default;
 
 $body-color: $dark !default;
 
@@ -24,9 +25,13 @@ $navbar-chulapa-text-color: $white !default;
 $navbar-chulapa-hover-color: $primary !default;
 $navbar-chulapa-active-color: $warning !default; //not working!
 
-$thead-chulapa-bg-color: $secondary !default;
-
+// Footer
 $footer-chulapa-hover-color: $warning !default; //not working!
+$footer-chulapa-text-color: $light !default;
+$footer-chulapa-icon-color: $light !default;
+$footer-chulapa-icon-hover-color: $primary !default;
+
+$thead-chulapa-bg-color: $secondary !default;
 
 .card.bg-primary, .card.bg-secondary {
   color: $white;

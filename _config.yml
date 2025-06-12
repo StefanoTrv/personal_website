@@ -158,3 +158,5 @@ sass:
     - function-units
     - color-functions
 
+exclude:
+    - other/
