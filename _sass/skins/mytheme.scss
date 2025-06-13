@@ -23,16 +23,20 @@ $body-color: $dark !default;
 $navbar-chulapa-bg-color: $secondary !default;
 $navbar-chulapa-text-color: $white !default;	
 $navbar-chulapa-hover-color: $primary !default;
-$navbar-chulapa-active-color: $warning !default; //not working!
 
 // Footer
-$footer-chulapa-hover-color: $warning !default; //not working!
 $footer-chulapa-text-color: $light !default;
 $footer-chulapa-icon-color: $light !default;
 $footer-chulapa-icon-hover-color: $primary !default;
+$footer-chulapa-hover-color: $primary !default;
 
 $thead-chulapa-bg-color: $secondary !default;
 
 .card.bg-primary, .card.bg-secondary {
   color: $white;
+}
+
+// Keeps the text color in the navbar white when hovering
+.navbar-chulapa-fab .nav-link:hover {
+    color: $white !important;
 }
