@@ -7,9 +7,10 @@ excerpt: Page not found
 permalink: /404.html
 ---
 <div class="my-auto text-center">
-   <h1 class="display-1 font-weight-bold">4<i class="fa fa-times-circle"></i>4</h1>
-   <h2>{{ page.subtitle }}</h2>
+   <h1 class="font-weight-bold text-primary" style="font-size: 10rem;">404</h1>
+   <h2 class="mt-0">{{ page.subtitle }}</h2>
    {% if site.search.provider %}
    <h4 class="pt-5"><a class="nav-link" href="{{ site.search.landing_page | default: '/search' | absolute_url }}">{{ site.search.label | default: 'Search' }} <i class="fa fa-search" aria-hidden="true"></i></a></h4>
    {% endif %}
+   <a href="/" role="button" class="btn btn-secondary mt-3">Back to Home</a>
 </div>

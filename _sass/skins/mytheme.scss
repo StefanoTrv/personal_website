@@ -40,3 +40,13 @@ $thead-chulapa-bg-color: $secondary !default;
 .navbar-chulapa-fab .nav-link:hover {
     color: $white !important;
 }
+
+// Background color of secondary buttons
+.btn-secondary:hover{
+	background-color: $primary !important;
+}
+
+// No border on secondary buttons
+.btn-secondary{
+	border: none !important;
+}
