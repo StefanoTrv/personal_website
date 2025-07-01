@@ -95,8 +95,8 @@ navbar:
     img: "./assets/img/white_pizza.png"
     url: /
   nav:
-  - title: One-level link #Label
-    url: /url1/  #url
+  - title: Curriculum Vitae
+    url: /curriculumvitae
   - title: Two-level link #Label
     child:
     - title: Second level first item
