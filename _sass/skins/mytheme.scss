@@ -46,7 +46,22 @@ $thead-chulapa-bg-color: $secondary !default;
 	background-color: $primary !important;
 }
 
-// No border on secondary buttons
-.btn-secondary{
+// No border on buttons
+.btn{
 	border: none !important;
+}
+
+// Background color of buttons used in the portfolio cards
+.btn-portfolio-link{
+	background-color: $white !important;
+	border: 2px solid $secondary !important;
+	color: $secondary !important;
+}
+.btn-portfolio-link:hover{
+	background-color: $white !important;
+	border: 2px solid $primary !important;
+	color: $primary !important;
+}
+.btn-portfolio-link:focus{
+    box-shadow: 0 0 5px 3px $warning !important;
 }

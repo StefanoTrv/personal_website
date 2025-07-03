@@ -1,0 +1,164 @@
+---
+layout: minimal
+header_type: hero
+title: My Portfolio
+subtitle: A non-exhaustive list of the projects I worked on
+permalink: /portfolio
+---
+{% include components/headers.html headertype= page.header_type imghero=page.header_img projects=page.project_links %}
+
+<div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex my-5 w-75">
+        <div class="row row-cols-1 row-cols-md-3">
+            {% include portfolio_card_template.html 
+                title = "Ecommerce website"
+                date = "2025"
+                text = "Initial design and implementation of an ecommerce website using the Flask framework. Advanced laboratory for the Object Oriented Design and Analysis course during my Master’s program."
+                labels = "Python, Flask, SQLAlchemy"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "Parallel propagator for the Stable Marriage constraint"
+                date = "2024 - 2025"
+                text = "CUDA-based Constraint Programming propagator for the Stable Marriage Constraint, integrated in the Minicpp solver. Initially developed for my
+Master’s Thesis."
+                txt_btn_1 = "Repository"
+                url_btn_1 = "https://github.com/StefanoTrv/parallel_stable_marriage_constraint"
+                labels = "CUDA, C++"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "simple_icd_11"
+                date = "2024 - 2025"
+                text = "A Python library for ICD-11 codes. It connects to an API to retrieve, parse and cache the data associated with ICD-11 codes."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://simpleicd11.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/simple_icd_11"
+                labels = "Python"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "Compiler’s front end"
+                date = "2023"
+                text = "Implementation of a compiler’s front end for an imperative language. Group project for the Languages and Compilers course during my Master’s program."
+                labels = "Haskell"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "ScegliMeglio"
+                date = "2022 - 2023"
+                text = "Web app for the creation of social choices, which are brief polls where voters must decide between some alternatives. Group project for the Software
+Engineering course during my Master’s program."
+                txt_btn_1 = "Repository"
+                url_btn_1 = "https://dev.azure.com/ingsw2223-heavyware/PollAtMe"
+                labels = "Python, Django"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "Food recipes app"
+                date = "2022"
+                text = "Almost complete design and developement of a Flutter application for managing food recipes Project for the Mobile Applications Design course during my Master’s program."
+                labels = "Dart, Flutter"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "simple_icd_10_cm"
+                date = "2021 - 2025"
+                text = "A Python library for ICD-10-CM codes."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://simpleicd10cm.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/simple_icd_10_CM"
+                labels = "Python"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "SimpleICD10CM-Java-edition"
+                date = "2021"
+                text = "A Java library for ICD-10-CM codes."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://simpleicd10cmjava.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/SimpleICD10CM-Java-edition"
+                labels = "Java"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "SimpleICD10-Java-edition"
+                date = "2021 - 2025"
+                text = "A Java library for ICD-10 codes."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://simpleicd10java.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/SimpleICD10-Java-edition"
+                labels = "Java"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "EasyXML"
+                date = "2021"
+                text = "A small Java library to easily parse, unparse and manipulate XML code."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://easyxml.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/EasyXML"
+                labels = "Java"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "Library for exchanging messages with Amazon Vendor"
+                date = "2021"
+                text = "A Java library that implements the sending and receiving of messages to and from the Amazon Vendor servers, using the SFTP protocol. Not kept up to date."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://vendorsftpconnection.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/Java-library-for-exchanging-messages-with-Amazon-Vendor-using-SFTP"
+                labels = "Java"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "simple_icd_10"
+                date = "2020 - 2025"
+                text = "A Python library for ICD-10 codes."
+                txt_btn_1 = "Web page"
+                url_btn_1 = "https://simpleicd10.stefanotravasci.it/"
+                txt_btn_2 = "Repository"
+                url_btn_2 = "https://github.com/StefanoTrv/simple_icd_10"
+                labels = "Python"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "ICD-10 to ICD-11 Death Certificate Conversion"
+                date = "2020"
+                text = "Program for converting death certificates from ICD-10 to ICD-11, including a simple analysis of the results. Group project for the Data & Techniques for eHealth course during my Bachelor’s program."
+                txt_btn_1 = "Repository"
+                url_btn_1 = "https://github.com/StefanoTrv/ICD-Certificate-Conversion"
+                labels = "Java"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "Product-Configuration"
+                date = "2019"
+                text = "Group project for the Interactive 3D graphics course during my Bachelor’s program, using the Three.js library."
+                txt_btn_1 = "Repository"
+                url_btn_1 = "https://github.com/StefanoTrv/product-configuration-2019-travasci-rossetto"
+                labels = "JavaScript, Three.js"
+            %}
+            
+            {% include portfolio_card_template.html 
+                title = "Modeling and rendering with boxes"
+                date = "2019"
+                text = "Group project for the Interactive 3D graphics course during my Bachelor’s program, using the Three.js library."
+                txt_btn_1 = "Repository"
+                url_btn_1 = "https://github.com/StefanoTrv/cubes-2019-rossetto-travasci"
+                labels = "JavaScript, Three.js"
+            %}
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center justify-content-center mb-5">
+   <a href="/" role="button" class="btn btn-secondary">Back to Home</a>
+   <a href="/writings" role="button" class="btn btn-secondary ml-5">Go to Writings Page</a>
+</div>
+

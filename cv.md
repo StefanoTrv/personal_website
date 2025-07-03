@@ -21,3 +21,7 @@ On this page, you can download my CV in both Italian and English. Please note th
 		</div>
 	</div>
 </div>
+
+<div class="text-center">
+   <a href="/" role="button" class="btn btn-secondary mt-3">Back to Home</a>
+</div>

@@ -97,14 +97,14 @@ navbar:
   nav:
   - title: Curriculum Vitae
     url: /curriculumvitae
+  - title: Portfolio
+    url: /portfolio
   - title: Two-level link #Label
     child:
     - title: Second level first item
       url: /url2-1
     - title: Second level second item
       url: /url2-2
-  - title: One-level link #Label
-    url: /url1/  #url
 
 footer:
   links:
