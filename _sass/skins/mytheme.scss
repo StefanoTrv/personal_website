@@ -9,13 +9,18 @@ $font-family-base: 'Sora', 'Roboto' !default;
 $primary: #BA2D0B !default;
 $secondary: #0B3142 !default;
 $success: #5A9367 !default;
-$info: #4ADBC8 !default;
+$info: #25BBA7 !default;
 $warning: #FFBA08 !default;
 $danger: #D42300 !default;
 $dark: #030D11 !default;
 $light: #ebf3f7 !default;
 $white: #ffffff !default;
 $link-hover-color: #f5532c !default;
+
+$my-gray: #3b3b3b;
+.text-my-gray {
+  color: $my-gray !important;
+}
 
 $body-color: $dark !default;
 
@@ -41,9 +46,22 @@ $thead-chulapa-bg-color: $secondary !default;
     color: $white !important;
 }
 
-// Background color of secondary buttons
+// Background color of secondary buttons on hover and focus
 .btn-secondary:hover{
 	background-color: $primary !important;
+}
+.btn-secondary:focus{
+	background-color: $primary !important;
+    box-shadow: 0 0 0 2px $warning !important;
+}
+
+// Background color of info buttons on hover and focus
+.btn-info:hover{
+	background-color: $primary !important;
+}
+.btn-info:focus{
+	background-color: $primary !important;
+    box-shadow: 0 0 0 2px $warning !important;
 }
 
 // No border on buttons

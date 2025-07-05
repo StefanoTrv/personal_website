@@ -99,6 +99,8 @@ navbar:
     url: /curriculumvitae
   - title: Portfolio
     url: /portfolio
+  - title: Writings and Publications
+    url: /writings
   - title: Two-level link #Label
     child:
     - title: Second level first item
