@@ -83,3 +83,10 @@ $thead-chulapa-bg-color: $secondary !default;
 .btn-portfolio-link:focus{
     box-shadow: 0 0 5px 3px $warning !important;
 }
+
+.zoom {
+  transition: transform .2s; /* Animation */
+}
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}

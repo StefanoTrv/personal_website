@@ -46,6 +46,9 @@ author:
     - url   : https://www.researchgate.net/profile/Stefano-Travasci
       icon  : "fa-brands fa-researchgate"
       label : "My ResearchGate profile"
+    - url: stefanotravasci@gmail.com
+      icon: far fa-envelope
+      label: "My email"
 
 # Build settings
 theme: chulapa-jekyll
@@ -101,6 +104,8 @@ navbar:
     url: /portfolio
   - title: Writings and Publications
     url: /writings
+  - title: Contact
+    url: /contact
   - title: Two-level link #Label
     child:
     - title: Second level first item
@@ -125,6 +130,9 @@ footer:
     - url   : https://www.researchgate.net/profile/Stefano-Travasci
       icon  : "fa-brands fa-researchgate"
       label : "My ResearchGate profile"
+    - url: stefanotravasci@gmail.com
+      icon: far fa-envelope
+      label: "My email"
 
 
 # Exclude from processing.
@@ -162,3 +170,5 @@ sass:
 
 exclude:
     - other/
+    - assets/js/LICENSE
+    - assets/js/tsparticles.confetti.bundle.min.js.LICENSE

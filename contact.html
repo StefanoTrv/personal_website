@@ -1,0 +1,32 @@
+---
+layout: default
+header_type: base
+title: Contact
+permalink: /contact
+---
+
+<script src="assets/js/tsparticles.confetti.bundle.min.js"></script>
+
+<div class="text-center pb-4">
+   <img src="assets/img/profile.jpg" alt="My beautiful face" class="rounded-circle zoom" width="300" height="300" onclick="shoot()">
+</div>
+
+Want to get in touch? Great! You can find me on <a href="https://www.linkedin.com/in/stefano-travasci/">LinkedIn</a> or reach me by <a href="mailto:stefanotravasci@gmail.com">email</a>.
+
+<div class="text-center">
+   <a href="/" role="button" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+
+<script>
+function shoot(){
+    for (let i = 0; i < 50; i++) {
+    const x = Math.random();
+    const y = Math.random();
+    confetti({
+        particleCount: 2,
+        origin: { y: y, x:x},
+        zIndex : -1,
+    });
+    }
+}
+</script>
