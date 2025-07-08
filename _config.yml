@@ -47,7 +47,7 @@ author:
       icon  : "fa-brands fa-researchgate"
       label : "My ResearchGate profile"
     - url: stefanotravasci@gmail.com
-      icon: far fa-envelope
+      icon: "far fa-envelope"
       label: "My email"
 
 # Build settings
@@ -106,12 +106,12 @@ navbar:
     url: /writings
   - title: Contact
     url: /contact
-  - title: Two-level link #Label
-    child:
-    - title: Second level first item
-      url: /url2-1
-    - title: Second level second item
-      url: /url2-2
+  #- title: Two-level link #Label
+  #  child:
+  #  - title: Second level first item
+  #    url: /url2-1
+  #  - title: Second level second item
+  #    url: /url2-2
 
 footer:
   links:
