@@ -97,3 +97,30 @@ $thead-chulapa-bg-color: $secondary !default;
 .zoom-small:hover {
   transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
+
+// Homepage header
+.home-header {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: $secondary;
+}
+
+#header_title {
+    color: $white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    font-size: 5em;
+    z-index: 100;
+}
+
+.home-header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
