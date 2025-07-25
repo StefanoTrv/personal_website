@@ -4,15 +4,36 @@ title: Home
 ---
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/><!-- For the CSS animations -->
 
+<script type="module" src="js/home.js"></script>
+
 <section class="home-header">
     <img src="assets/img/pizza_header_3.png" id="pizza3">
     <img src="assets/img/pizza_header_2.png" id="pizza2">
     <img src="assets/img/pizza_header_1.png" id="pizza1">
     <h1 id="header_title" class="animate__animated animate__fadeInUp animate__faster">Stefano Travasci</h1>
-    <script src="assets/js/home_header.js"></script>
 </section>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio dolor, laoreet nec maximus ut, interdum non sem. Mauris at efficitur magna. Nam id dolor interdum est consectetur bibendum ut eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras hendrerit dolor quis tellus scelerisque, id hendrerit nisi elementum. Sed sed libero at odio consectetur malesuada. Nulla odio metus, accumsan rutrum pulvinar porttitor, pretium ut massa. Nunc nunc lacus, feugiat sit amet orci nec, vehicula placerat tortor. In facilisis ullamcorper urna. Cras sed lectus et quam accumsan convallis. In hac habitasse platea dictumst. Etiam eu ante in sem aliquet finibus. Suspendisse potenti.</p>
+<section class="container-fluid m-0 p-0 pt-3">
+  <div class="row w-100">
+    <div class="col-7">
+      <div class="py-5 mt-3 text-secondary w-75" style="float: right;">
+        <h5>
+            <span id="hellothere">Hello there!</span> I'm Stefano Travasci. I have a Master's Degree (and a Bachelor’s Degree!) in Computer Science.</br>
+            Scroll through this page to get to know some of what I do!</br>
+            You can download a more structured and formal CV from <a href="/curriculumvitae">from this page</a>.</br>
+            <a href="/contact">Here</a> you can find the ways to get in contact with me.
+        </h5>
+      </div>
+    </div>
+    <div class="col-5 m-0 p-0">
+      <canvas id="tv_canvas" width="500" height="375" class="w-75"></canvas>
+    </div>
+  </div>
+</section>
+
+<video id="TVvideo" autoplay muted loop playsinline style="display: none">
+  <source src="assets/video/TV_video.mp4" type="video/mp4">
+</video>
 
 <p>Pellentesque condimentum ex ex, sed tincidunt est dapibus fringilla. In pellentesque dapibus orci, eget ultricies dui lacinia id. Nam eget dictum est, at hendrerit libero. Quisque nulla orci, elementum a massa eu, rutrum sagittis dui. Vivamus venenatis velit odio. Mauris gravida ut tortor eu semper. Ut et tortor aliquet, suscipit quam vel, pulvinar sem. Proin varius erat ipsum, non auctor libero aliquet sed. Aliquam sed orci volutpat, ornare lectus sed, pellentesque ipsum.</p>
 
