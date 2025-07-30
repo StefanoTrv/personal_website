@@ -4,10 +4,21 @@ import { RGBELoader } from './threejs/RGBELoader.js';
 
 const graph_node_radius = 25; //Radius in pixel of the graph nodes
 const graph_edge_click_distance = 5; //Maximum distance, in pixels, from a click point to an edge that will count as a click on the edge
-let graph_animate_edge = true;
-const graph_animated_edge = 6;
+let graph_highlight_edge = true;
+const graph_highlighted_edge = 6;
 let graph_animation_wait = 5;
 let graph_reset = false;
+let graph_current_color = "red";
+const graph_pointer_icon = new Image();
+let graph_scale_pointer = false;
+let graph_pointer_coords;
+const graph_cursor_size = 30;
+const graph_cursor_size_scaled = 35;
+
+const graph_buffer = document.createElement('canvas'); //buffer for restoring the canvas under the pointer icon
+graph_buffer.width = graph_cursor_size_scaled;
+graph_buffer.height = graph_cursor_size_scaled;
+const graph_bufferCtx = graph_buffer.getContext('2d');
 
 window.onload = function () {
     /*
@@ -110,6 +121,7 @@ window.onload = function () {
     /*
         Graph thing
     */
+    graph_pointer_icon.src = '../assets/img/Pointing_hand_cursor.png';
     const nodes = [
         [0, 1],
         [4, 0],
@@ -122,17 +134,29 @@ window.onload = function () {
         [7, 4],
         [6, 6]
     ];
-    let node_colors_original = [
+    let colors_original = [
         "#90A959",
         "#A63D40",
         "#FFEC51",
         "#FF674D",
         "#832161",
         "#662C91",
-        "#5DB7DE",//
+        "#5DB7DE",
         "#32965D",
         "#69585F",
         "#EF959D"
+    ];
+    let node_colors_original = [
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white"
     ];
     const edges = [
         [0, 1],
@@ -183,7 +207,8 @@ window.onload = function () {
     let node_colors = [];
     let free_nodes = [];
     let edge_stack = [];
-    resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack);
+    let colors = [];
+    resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack, colors, colors_original);
     
     let edge_lines = []; // y = mx + q (t[0]=m, t[1]=q) If the line is vertical, m is infinite and x = q.
     for (let i = 0; i < edges.length; i++) {
@@ -205,10 +230,9 @@ window.onload = function () {
     const graphcanvas = document.getElementById('graph_canvas');
     graphcanvas.style.userSelect = 'none'; //Disable selection on double click
     const ctx = graphcanvas.getContext('2d');
-    drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas.width, graphcanvas.height);
     
     graphcanvas.addEventListener('click', (event) => {
-        graph_animate_edge = false;
+        graph_highlight_edge = false;
         let was_changed = false;
         
         const rect = graphcanvas.getBoundingClientRect(); //position of canvas on screen
@@ -236,9 +260,9 @@ window.onload = function () {
             }
         }
         
-        if (was_changed || graph_animate_edge){ //Resets and redraws if some edge was changed
-            resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack);
-            drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas.width, graphcanvas.height);
+        if (was_changed || graph_highlight_edge){ //Resets and redraws if some edge was changed
+            resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack, colors, colors_original);
+            drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas);
         }
         
     });
@@ -269,14 +293,21 @@ window.onload = function () {
         graphcanvas.style.cursor = 'default';
         
     });
+        
+    let edge = edges[graph_highlighted_edge];
+    let x0 = graph_node_radius + nodes[edge[0]][0] * graph_node_radius * 2;
+    let y0 = graph_node_radius + nodes[edge[0]][1] * graph_node_radius * 2;
+    let x1 = graph_node_radius + nodes[edge[1]][0] * graph_node_radius * 2;
+    let y1 = graph_node_radius + nodes[edge[1]][1] * graph_node_radius * 2;
+    graph_pointer_coords = [(x0+x1)/2, (y0+y1)/2 - 10];
     
-    setTimeout(() => { //Animate the edge
-            animateEdge2(ctx, nodes, edges, node_colors);
-        }, 500);
-    
-    setInterval(() => { //Execute al show algorithm
-            animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, graphcanvas.width, graphcanvas.height);
-        }, 1000);
+    graph_pointer_icon.onload = function() {
+        drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas);
+        setInterval(() => { //Execute al show algorithm
+                animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, graphcanvas, colors, colors_original);
+            }, 1000);
+    };
+
 };
 
 function updateHeader(){
@@ -304,10 +335,11 @@ function drawEdge(ctx, x0, y0, x1, y1, color, width) {
     ctx.stroke();  
 }
 
-function drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas_width, canvas_height){
-    ctx.clearRect(0, 0, canvas_width, canvas_height);
+function drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let edge;
     for (let i = 0; i < edges.length; i++) {
-        let edge = edges[i];
+        edge = edges[i];
         let color;
         let width;
         if (edge_status[i] == 'inactive'){
@@ -325,6 +357,27 @@ function drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas_width, ca
     for (let i = 0; i < nodes.length; i++) {
         drawNode(ctx, nodes[i][0], nodes[i][1], node_colors[i]);
     }
+    
+    if(graph_highlight_edge){ //Draw pointer icon to suggest interaction with edge
+        graph_bufferCtx.drawImage(canvas, graph_pointer_coords[0], graph_pointer_coords[1], graph_cursor_size_scaled, graph_cursor_size_scaled, 0, 0, graph_cursor_size_scaled, graph_cursor_size_scaled);
+        drawPointer(ctx, true);
+    }
+}
+
+function drawPointer(ctx, on_clean){
+    if (!on_clean){
+        ctx.clearRect(graph_pointer_coords[0], graph_pointer_coords[1], graph_cursor_size_scaled, graph_cursor_size_scaled);
+        ctx.drawImage(graph_buffer, graph_pointer_coords[0], graph_pointer_coords[1]);
+    }
+    let pointer_size;
+    if (graph_scale_pointer){
+        pointer_size = graph_cursor_size_scaled;
+        graph_scale_pointer = false;
+    } else {
+        pointer_size = graph_cursor_size;
+        graph_scale_pointer = true;
+    }
+    ctx.drawImage(graph_pointer_icon, graph_pointer_coords[0], graph_pointer_coords[1], pointer_size, pointer_size);
 }
 
 function getDistanceFromEdge(x_click, y_click, ms, qs, node0, node1){
@@ -383,49 +436,7 @@ function getDistanceFromEdge(x_click, y_click, ms, qs, node0, node1){
             return distance;
 }
 
-function animateEdge1(ctx, nodes, edges, node_colors){ //Only works if the edge is inactive
-    if(!graph_animate_edge){
-        return;
-    }
-    let edge = edges[graph_animated_edge];
-    
-    //Deletes previously drawn edge
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
-    ctx.lineWidth = 10;
-    ctx.beginPath();
-    ctx.moveTo(graph_node_radius + nodes[edge[0]][0] * graph_node_radius * 2, graph_node_radius + nodes[edge[0]][1] * graph_node_radius * 2);
-    ctx.lineTo(graph_node_radius + nodes[edge[1]][0] * graph_node_radius * 2, graph_node_radius + nodes[edge[1]][1] * graph_node_radius * 2);
-    ctx.stroke();
-    ctx.globalCompositeOperation = 'source-over';
-    
-    //Draws edge
-    drawEdge(ctx,nodes[edge[0]][0],nodes[edge[0]][1],nodes[edge[1]][0],nodes[edge[1]][1], 'black', 1);
-    drawNode(ctx, nodes[edge[0]][0], nodes[edge[0]][1], node_colors[edge[0]]);
-    drawNode(ctx, nodes[edge[1]][0], nodes[edge[1]][1], node_colors[edge[1]]);
-    
-    //Continues animation
-    setTimeout(() => {
-            animateEdge2(ctx, nodes, edges, node_colors);
-        }, 500);
-}
-
-function animateEdge2(ctx, nodes, edges, node_colors){ //Only works if the edge is inactive
-    if(!graph_animate_edge){
-        return;
-    }
-    let edge = edges[graph_animated_edge];
-    drawEdge(ctx,nodes[edge[0]][0],nodes[edge[0]][1],nodes[edge[1]][0],nodes[edge[1]][1], 'red', 2);
-    drawNode(ctx, nodes[edge[0]][0], nodes[edge[0]][1], node_colors[edge[0]]);
-    drawNode(ctx, nodes[edge[1]][0], nodes[edge[1]][1], node_colors[edge[1]]);
-    
-    //Continues animation
-    setTimeout(() => {
-            animateEdge1(ctx, nodes, edges, node_colors);
-        }, 500);
-}
-
-function resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack){
+function resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack, colors, colors_original){
     node_colors.length = 0;
     node_colors.push(...node_colors_original);
     free_nodes.length = 0;
@@ -433,38 +444,33 @@ function resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_s
         free_nodes.push(i);
     }
     edge_stack.length = 0;
-    let first_node = Math.floor(Math.random() * nodes.length);
-    let index = free_nodes.indexOf(first_node);
-    free_nodes.splice(index, 1);
-    for (let i = 0; i < edges.length; i++) {
-        if (edge_status[i] == 'active' && (edges[i][0] == first_node || edges[i][1] == first_node)) {
-            edge_stack.push(edges[i]);
-        }
-    }
+    colors.length = 0;
+    colors.push(...colors_original);
     graph_animation_wait = Math.max(graph_animation_wait,3);
     graph_reset = false;
 }
 
-function animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, canvas_width, canvas_height){
+function animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, canvas, colors, colors_original){
     if (graph_animation_wait > 0) {
         graph_animation_wait -= 1;
+        if (graph_highlight_edge) {
+            drawPointer(ctx, false);
+        }
         return;
     }
     if (graph_reset){
-        resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack);
-        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas_width, canvas_height);
+        resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack, colors, colors_original);
+        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas);
         return;
     }
-    let edge, new_node, color;
+    let edge, new_node;
     let found_new_node = false;
     while (edge_stack.length > 0){
         edge = edge_stack.pop();
         if (free_nodes.includes(edge[0])){
             new_node = edge[0];
-            color = node_colors[edge[1]];
         } else if (free_nodes.includes(edge[1])){
             new_node = edge[1];
-            color = node_colors[edge[0]];
         } else { //This is an internal edge
             continue;
         }
@@ -473,16 +479,14 @@ function animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, no
                 edge_stack.push(edges[i]);
             }
         }
-        console.log("Met", free_nodes, new_node);
-        node_colors[new_node] = color;
+        node_colors[new_node] = graph_current_color;
         let index = free_nodes.indexOf(new_node);
         free_nodes.splice(index, 1);
-        console.log("Met", free_nodes, "Done!");
         found_new_node = true;
         break;
     }
     if (found_new_node){ //Draw updated graph
-        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas_width, canvas_height);
+        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas);
     } else if (free_nodes.length>0){ //Start DFS of a new node
         new_node = free_nodes[Math.floor(Math.random() * free_nodes.length)];
         for (let i = 0; i < edges.length; i++) {
@@ -490,15 +494,21 @@ function animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, no
                 edge_stack.push(edges[i]);
             }
         }
-        console.log("New", free_nodes, new_node);
         let index = free_nodes.indexOf(new_node);
         free_nodes.splice(index, 1);
-        console.log("New", free_nodes, "Done!");
-        //Executes again immediately (avoids duplicating a "frame")
-        animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, canvas_width, canvas_height);
+        
+        index = Math.floor(Math.random() * colors.length);
+        graph_current_color = colors[index];
+        colors.splice(index,1);
+        
+        node_colors[new_node] = graph_current_color;
+        
+        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas);
     } else { //Visit finished. Wait and then start new execution.
+        if (graph_highlight_edge) {
+            drawPointer(ctx, false);
+        }
         graph_animation_wait = 4; //This execution already counts as 1
         graph_reset = true;
     }
-    //console.log(node_colors);
 }
