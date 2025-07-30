@@ -6,6 +6,8 @@ const graph_node_radius = 25; //Radius in pixel of the graph nodes
 const graph_edge_click_distance = 5; //Maximum distance, in pixels, from a click point to an edge that will count as a click on the edge
 let graph_animate_edge = true;
 const graph_animated_edge = 6;
+let graph_animation_wait = 5;
+let graph_reset = false;
 
 window.onload = function () {
     /*
@@ -120,14 +122,14 @@ window.onload = function () {
         [7, 4],
         [6, 6]
     ];
-    let node_colors = [
-        "#CDC7E5",
-        "#FFFBDB",
+    let node_colors_original = [
+        "#90A959",
+        "#A63D40",
         "#FFEC51",
         "#FF674D",
         "#832161",
         "#662C91",
-        "#6FD08C",
+        "#5DB7DE",//
         "#32965D",
         "#69585F",
         "#EF959D"
@@ -178,11 +180,12 @@ window.onload = function () {
         'inactive',
         'inactive'
     ];
+    let node_colors = [];
+    let free_nodes = [];
+    let edge_stack = [];
+    resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack);
+    
     let edge_lines = []; // y = mx + q (t[0]=m, t[1]=q) If the line is vertical, m is infinite and x = q.
-    const graphcanvas = document.getElementById('graph_canvas');
-    graphcanvas.style.userSelect = 'none'; //Disable selection on double click
-    const ctx = graphcanvas.getContext('2d');
-    drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas.width, graphcanvas.height);
     for (let i = 0; i < edges.length; i++) {
         let x0 = graph_node_radius + nodes[edges[i][0]][0] * graph_node_radius * 2;
         let y0 = graph_node_radius + nodes[edges[i][0]][1] * graph_node_radius * 2;
@@ -199,9 +202,14 @@ window.onload = function () {
         edge_lines.push([m,q]);
     }
     
+    const graphcanvas = document.getElementById('graph_canvas');
+    graphcanvas.style.userSelect = 'none'; //Disable selection on double click
+    const ctx = graphcanvas.getContext('2d');
+    drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas.width, graphcanvas.height);
+    
     graphcanvas.addEventListener('click', (event) => {
         graph_animate_edge = false;
-        let redraw = false;
+        let was_changed = false;
         
         const rect = graphcanvas.getBoundingClientRect(); //position of canvas on screen
         const scaleX = graphcanvas.width / rect.width;
@@ -224,11 +232,12 @@ window.onload = function () {
                 } else {
                     edge_status[i] = 'active';
                 }
-                redraw = true;
+                was_changed = true;
             }
         }
         
-        if (redraw || graph_animate_edge){ //Redraw only if something was changed
+        if (was_changed || graph_animate_edge){ //Resets and redraws if some edge was changed
+            resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack);
             drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas.width, graphcanvas.height);
         }
         
@@ -261,9 +270,13 @@ window.onload = function () {
         
     });
     
-    setTimeout(() => {
+    setTimeout(() => { //Animate the edge
             animateEdge2(ctx, nodes, edges, node_colors);
         }, 500);
+    
+    setInterval(() => { //Execute al show algorithm
+            animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, graphcanvas.width, graphcanvas.height);
+        }, 1000);
 };
 
 function updateHeader(){
@@ -378,7 +391,7 @@ function animateEdge1(ctx, nodes, edges, node_colors){ //Only works if the edge 
     
     //Deletes previously drawn edge
     ctx.globalCompositeOperation = 'destination-out';
-    ctx.strokeStyle = 'rgba(0, 0, 0, 1)'; // fully opaque = fully erased
+    ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
     ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.moveTo(graph_node_radius + nodes[edge[0]][0] * graph_node_radius * 2, graph_node_radius + nodes[edge[0]][1] * graph_node_radius * 2);
@@ -410,4 +423,82 @@ function animateEdge2(ctx, nodes, edges, node_colors){ //Only works if the edge 
     setTimeout(() => {
             animateEdge1(ctx, nodes, edges, node_colors);
         }, 500);
+}
+
+function resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack){
+    node_colors.length = 0;
+    node_colors.push(...node_colors_original);
+    free_nodes.length = 0;
+    for (let i = 0; i < nodes.length; i++) {
+        free_nodes.push(i);
+    }
+    edge_stack.length = 0;
+    let first_node = Math.floor(Math.random() * nodes.length);
+    let index = free_nodes.indexOf(first_node);
+    free_nodes.splice(index, 1);
+    for (let i = 0; i < edges.length; i++) {
+        if (edge_status[i] == 'active' && (edges[i][0] == first_node || edges[i][1] == first_node)) {
+            edge_stack.push(edges[i]);
+        }
+    }
+    graph_animation_wait = Math.max(graph_animation_wait,3);
+    graph_reset = false;
+}
+
+function animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, canvas_width, canvas_height){
+    if (graph_animation_wait > 0) {
+        graph_animation_wait -= 1;
+        return;
+    }
+    if (graph_reset){
+        resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack);
+        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas_width, canvas_height);
+        return;
+    }
+    let edge, new_node, color;
+    let found_new_node = false;
+    while (edge_stack.length > 0){
+        edge = edge_stack.pop();
+        if (free_nodes.includes(edge[0])){
+            new_node = edge[0];
+            color = node_colors[edge[1]];
+        } else if (free_nodes.includes(edge[1])){
+            new_node = edge[1];
+            color = node_colors[edge[0]];
+        } else { //This is an internal edge
+            continue;
+        }
+        for (let i = 0; i < edges.length; i++) { //Adds edges involving the new node
+            if (edge != i && edge_status[i] == 'active' && (edges[i][0] == new_node || edges[i][1] == new_node)) { //Already visited edges may be re-visited, but they'll be skipped immediately
+                edge_stack.push(edges[i]);
+            }
+        }
+        console.log("Met", free_nodes, new_node);
+        node_colors[new_node] = color;
+        let index = free_nodes.indexOf(new_node);
+        free_nodes.splice(index, 1);
+        console.log("Met", free_nodes, "Done!");
+        found_new_node = true;
+        break;
+    }
+    if (found_new_node){ //Draw updated graph
+        drawGraph(ctx, nodes, node_colors, edges, edge_status, canvas_width, canvas_height);
+    } else if (free_nodes.length>0){ //Start DFS of a new node
+        new_node = free_nodes[Math.floor(Math.random() * free_nodes.length)];
+        for (let i = 0; i < edges.length; i++) {
+            if (edge_status[i] == 'active' && (edges[i][0] == new_node || edges[i][1] == new_node)) {
+                edge_stack.push(edges[i]);
+            }
+        }
+        console.log("New", free_nodes, new_node);
+        let index = free_nodes.indexOf(new_node);
+        free_nodes.splice(index, 1);
+        console.log("New", free_nodes, "Done!");
+        //Executes again immediately (avoids duplicating a "frame")
+        animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, canvas_width, canvas_height);
+    } else { //Visit finished. Wait and then start new execution.
+        graph_animation_wait = 4; //This execution already counts as 1
+        graph_reset = true;
+    }
+    //console.log(node_colors);
 }
