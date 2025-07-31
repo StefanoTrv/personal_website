@@ -20,6 +20,8 @@ graph_buffer.width = graph_cursor_size_scaled;
 graph_buffer.height = graph_cursor_size_scaled;
 const graph_bufferCtx = graph_buffer.getContext('2d');
 
+let is_hovering_photo = [false, false, false];
+
 window.onload = function () {
     /*
         Header
@@ -303,11 +305,52 @@ window.onload = function () {
     
     graph_pointer_icon.onload = function() {
         drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas);
-        setInterval(() => { //Execute al show algorithm
+        setInterval(() => { //Execute and show algorithm
                 animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, node_colors_original, edge_status, graphcanvas, colors, colors_original);
             }, 1000);
     };
-
+    
+    /*
+      Photo "carousel"
+    */
+    let photo_array = [
+        ["assets/img/carousel/foto01.jpg", "https://it.wikipedia.org/wiki/Cytisus_decumbens_pindicola", "Flowering Cytisus decumbens pindicola"],
+        ["assets/img/carousel/foto02.jpg", "https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino", "Magredi of San Quirino"],
+        ["assets/img/carousel/foto03.jpg", "https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino", "Magredi of San Quirino"],
+        ["assets/img/carousel/foto04.jpg", "https://it.wikipedia.org/wiki/Pescincanna", "Church of Pescincanna"],
+        ["assets/img/carousel/foto05.jpg", "https://it.wikipedia.org/wiki/Chiesa_di_Sant%27Antonio_Abate_(Pravisdomini)", "Church of Saint Anthony Abbot in Pravisdomini"],
+        ["assets/img/carousel/foto06.jpg", "https://it.wikipedia.org/wiki/Echinopsis_oxygona", "Flowering cactus"],
+        ["assets/img/carousel/foto07.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["assets/img/carousel/foto08.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["assets/img/carousel/foto09.jpg", "https://it.wikipedia.org/wiki/Lago_di_Barcis", "Barcis Lake"],
+        ["assets/img/carousel/foto10.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["assets/img/carousel/foto11.jpg", "https://it.wikipedia.org/wiki/Azzano_Decimo", "Azzano Decimo"],
+        ["assets/img/carousel/foto12.jpg", "https://it.wikipedia.org/wiki/Sacile", "Sacile"],
+        ["assets/img/carousel/foto13.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
+        ["assets/img/carousel/foto14.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
+        ["assets/img/carousel/foto15.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
+        ["assets/img/carousel/foto16.jpg", "https://it.wikipedia.org/wiki/Sacile", "Sacile"],
+        ["assets/img/carousel/foto17.jpg", "https://it.wikipedia.org/wiki/Venezia", "Venice"],
+        ["assets/img/carousel/foto18.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
+        ["assets/img/carousel/foto19.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
+        ["assets/img/carousel/foto20.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"]
+    ];
+    
+    randomizePhoto(1, photo_array);
+    randomizePhoto(2, photo_array);
+    randomizePhoto(3, photo_array);
+    
+    document.getElementById("photo_link_1").addEventListener('mouseenter', () => is_hovering_photo[0] = true);
+    document.getElementById("photo_link_1").addEventListener('mouseleave', () => is_hovering_photo[0] = false);
+    document.getElementById("photo_link_2").addEventListener('mouseenter', () => is_hovering_photo[1] = true);
+    document.getElementById("photo_link_2").addEventListener('mouseleave', () => is_hovering_photo[1] = false);
+    document.getElementById("photo_link_3").addEventListener('mouseenter', () => is_hovering_photo[2] = true);
+    document.getElementById("photo_link_3").addEventListener('mouseleave', () => is_hovering_photo[2] = false);
+    
+    setInterval(() => { //Change a picture every 5 seconds (unless hovering)
+            changeRandomPhoto(photo_array);
+        }, 5000);
+        
 };
 
 function updateHeader(){
@@ -510,5 +553,32 @@ function animateGraph(ctx, nodes, edges, node_colors, free_nodes, edge_stack, no
         }
         graph_animation_wait = 4; //This execution already counts as 1
         graph_reset = true;
+    }
+}
+
+function randomizePhoto(box_number, photo_array){
+    let new_index;
+    let new_src;
+    let box_id = "photo_box_" + box_number.toString();
+    let link_id = "photo_link_" + box_number.toString();
+    console.log(box_id, link_id);
+    do {
+        new_index = Math.floor(Math.random() * photo_array.length);
+        new_src = photo_array[new_index][0];
+        console.log(new_src,document.getElementById('photo_box_1').src,document.getElementById('photo_box_2').src,document.getElementById('photo_box_3').src);
+    } while (
+                document.getElementById('photo_box_1').src.slice(-10) == new_src.slice(-10) ||
+                document.getElementById('photo_box_2').src.slice(-10) == new_src.slice(-10) ||
+                document.getElementById('photo_box_3').src.slice(-10) == new_src.slice(-10)
+            );
+    document.getElementById(box_id).src = new_src;
+    document.getElementById(link_id).href = photo_array[new_index][1];
+    document.getElementById(box_id).alt = photo_array[new_index][2];
+}
+
+function changeRandomPhoto(photo_array){
+    let p = Math.floor(Math.random() * 3);
+    if (!is_hovering_photo[p]){
+        randomizePhoto(p+1, photo_array);
     }
 }
