@@ -232,7 +232,6 @@ window.onload = function () {
     const ctx = graphcanvas.getContext('2d');
     
     graphcanvas.addEventListener('click', (event) => {
-        graph_highlight_edge = false;
         let was_changed = false;
         
         const rect = graphcanvas.getBoundingClientRect(); //position of canvas on screen
@@ -261,6 +260,7 @@ window.onload = function () {
         }
         
         if (was_changed || graph_highlight_edge){ //Resets and redraws if some edge was changed
+            graph_highlight_edge = false;
             resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack, colors, colors_original);
             drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas);
         }
