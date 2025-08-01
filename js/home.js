@@ -561,11 +561,9 @@ function randomizePhoto(box_number, photo_array){
     let new_src;
     let box_id = "photo_box_" + box_number.toString();
     let link_id = "photo_link_" + box_number.toString();
-    console.log(box_id, link_id);
     do {
         new_index = Math.floor(Math.random() * photo_array.length);
         new_src = photo_array[new_index][0];
-        console.log(new_src,document.getElementById('photo_box_1').src,document.getElementById('photo_box_2').src,document.getElementById('photo_box_3').src);
     } while (
                 document.getElementById('photo_box_1').src.slice(-10) == new_src.slice(-10) ||
                 document.getElementById('photo_box_2').src.slice(-10) == new_src.slice(-10) ||
