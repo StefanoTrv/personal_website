@@ -350,7 +350,14 @@ window.onload = function () {
     setInterval(() => { //Change a picture every 5 seconds (unless hovering)
             changeRandomPhoto(photo_array);
         }, 5000);
-        
+    
+    /*
+      Fake contact form
+    */
+    
+    document.getElementById("button-fake-form").addEventListener('click', (event) => {
+        sendFakeForm();
+    });
 };
 
 function updateHeader(){
@@ -579,4 +586,55 @@ function changeRandomPhoto(photo_array){
     if (!is_hovering_photo[p]){
         randomizePhoto(p+1, photo_array);
     }
+}
+
+function sendFakeForm(){
+    if(validateFakeForm()){
+        let subject = document.getElementById("fake-form-subject").value;
+        let body = document.getElementById("fake-form-message").value;
+        window.location.href = `mailto:stefanotravasci@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        document.getElementById("button-fake-form").innerHTML="Sent?";
+    }
+}
+
+function validateFakeForm(){
+    let name = document.getElementById("fake-form-name");
+    let email = document.getElementById("fake-form-email");
+    let subject = document.getElementById("fake-form-subject");
+    let message = document.getElementById("fake-form-message");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let validated = true;
+    if (name.value == ""){
+        name.classList.add("is-invalid");
+        name.classList.remove("is-valid");
+        validated = false;
+    } else {
+        name.classList.add("is-valid");
+        name.classList.remove("is-invalid");
+    }
+    if (!emailRegex.test(email.value)){
+        email.classList.add("is-invalid");
+        email.classList.remove("is-valid");
+        validated = false;
+    } else {
+        email.classList.add("is-valid");
+        email.classList.remove("is-invalid");
+    }
+    if (subject.value == ""){
+        subject.classList.add("is-invalid");
+        subject.classList.remove("is-valid");
+        validated = false;
+    } else {
+        subject.classList.add("is-valid");
+        subject.classList.remove("is-invalid");
+    }
+    if (message.value == ""){
+        message.classList.add("is-invalid");
+        message.classList.remove("is-valid");
+        validated = false;
+    } else {
+        message.classList.add("is-valid");
+        message.classList.remove("is-invalid");
+    }
+    return validated;
 }

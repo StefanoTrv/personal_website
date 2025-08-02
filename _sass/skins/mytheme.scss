@@ -136,5 +136,60 @@ $thead-chulapa-bg-color: $secondary !default;
 //Homepage writings
 #writingsVideo{
     border-radius: 7px;
+    width: 75%;
+}
+
+//Homepage contact form
+#fake-form{
+    padding: 2em;
+    padding-left: 5em;
     width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+}
+@media (max-width: 767px) {
+  #fake-form {
+    width: 100%;
+  }
+}
+#name-fake-form-group{
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
+#email-fake-form-group{
+    grid-column: 2 / 3;
+    grid-row: 1;
+}
+#subject-fake-form-group{
+    grid-column: 1 / 3;
+    grid-row: 2;
+}
+#message-fake-form-group{
+    grid-column: 1 / 3;
+    grid-row: 3;
+}
+#button-fake-form-group{
+    grid-column: 1 / 3;
+    grid-row: 4;
+    text-align: center;
+}
+.fake-form-group{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.fake-form-input{
+    width: 100%;
+}
+.fake-form-textarea{
+    width: 100%;
+    resize: vertical;              /* allow vertical resize only */
+    min-height: calc(1.2em * 5);  /* approximate height of 5 rows */
+    line-height: 1.2em;            /* ensure line-height matches calculation */
+}
+.highlight {
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: $primary;
+  text-decoration-thickness: 2px;
 }

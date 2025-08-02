@@ -52,7 +52,7 @@ title: Home
   </div>
 </section>
 
-<section class="container-fluid m-0 p-0 pt-3">
+<section class="container-fluid pt-3">
   <div class="row w-100">
     <div class="col-md-7 col-12">
       <div class="py-md-5 mt-md-5 text-secondary w-75 pr-md-2" style="float: right;">
@@ -62,8 +62,8 @@ title: Home
         </h4>
       </div>
     </div>
-    <div class="col-md-5 col-12 m-0 p-0">
-      <video id="writingsVideo" autoplay muted loop playsinline class="my-5">
+    <div class="col-md-5 col-12">
+      <video id="writingsVideo" autoplay muted loop playsinline class="m-5 mx-md-0">
         <source src="assets/video/writing_fountain_pen.mp4" type="video/mp4">
       </video>
     </div>
@@ -101,26 +101,51 @@ title: Home
   </div>
 </section>
 
-<p>Aliquam vel neque sit amet urna mattis fermentum. Cras pulvinar ligula non felis feugiat, nec rutrum magna dictum. Nam ut magna justo. In at suscipit enim, non tempor massa. Ut viverra sagittis leo. In ac ornare ex, sed fermentum sapien. Etiam ultricies feugiat pretium. Sed finibus eleifend congue.</p>
+<section class="container-fluid m-0 p-0 pt-3">
+  <div class="row w-100">
+    <div class="col-md-6 col-12">
+      <div class="py-md-5 mt-md-5 text-secondary w-75 pr-md-2" style="float: right;">
+        <h4>
+          Thank you for scrolling through, this is all for now!</br>
+          This website does not have a backend, but you can write me an email using this <span class="highlight">fake contact form</span>.</br>
+          For more proper ways to get in touch, check out the <a href="/contact">contact page</a>.
+        </h4>
+      </div>
+    </div>
+    <div class="col-md-6 col-12 m-0 p-0">
+      
+      <div id="fake-form">
 
-<p>Donec et dolor at ante egestas facilisis. Maecenas maximus volutpat semper. Sed nulla tellus, sagittis eget pretium hendrerit, consectetur eu nulla. Proin in laoreet magna. Etiam nisl sem, elementum et condimentum ut, imperdiet eget erat. Nunc ornare aliquam cursus. Nunc justo magna, porta at auctor in, facilisis vitae metus. Duis non mauris nec tortor iaculis euismod.</p>
+        <div class="fake-form-group form-group" id="name-fake-form-group">
+          <label class="fake-form-label" for="name">Name:</label><br />
+          <input class="fake-form-input form-control" type="text" id="fake-form-name" name="name" placeholder="Your name..."/>
+          <small class="invalid-feedback">Just because this form is fake, it does not mean you can skip important fields!</small>
+        </div>
+    
+        <div class="fake-form-group form-group" id="email-fake-form-group">
+          <label class="fake-form-label" for="email">Email:</label><br />
+          <input class="fake-form-input form-control" type="email" id="fake-form-email" name="email" placeholder="your@email.address"/>
+          <small class="invalid-feedback">Yes, this field is useless, but would it not be nice to have it filled properly?</small>
+        </div>
+    
+        <div class="fake-form-group form-group" id="subject-fake-form-group">
+          <label class="fake-form-label" for="subject">Subject:</label><br />
+          <input class="fake-form-input form-control" type="text" id="fake-form-subject" name="subject" placeholder="A nice title"/>
+          <small class="invalid-feedback">"A good title is like a summary of the content." -Anonymous</small>
+        </div>
+    
+        <div class="fake-form-group form-group" id="message-fake-form-group">
+          <label class="fake-form-label" for="message">Message:</label><br />
+          <textarea class="fake-form-textarea form-control" id="fake-form-message" rows="5" name="message" placeholder="Hello,&#10;we've been trying to reach you about..."></textarea>
+          <small class="invalid-feedback">You should write something here. Or do not. You are a free human being.</small>
+        </div>
+        
+        <div class="fake-form-group form-group" id="button-fake-form-group">
+            <button class="btn btn-secondary" id="button-fake-form">Send?</button>
+        </div>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio dolor, laoreet nec maximus ut, interdum non sem. Mauris at efficitur magna. Nam id dolor interdum est consectetur bibendum ut eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras hendrerit dolor quis tellus scelerisque, id hendrerit nisi elementum. Sed sed libero at odio consectetur malesuada. Nulla odio metus, accumsan rutrum pulvinar porttitor, pretium ut massa. Nunc nunc lacus, feugiat sit amet orci nec, vehicula placerat tortor. In facilisis ullamcorper urna. Cras sed lectus et quam accumsan convallis. In hac habitasse platea dictumst. Etiam eu ante in sem aliquet finibus. Suspendisse potenti.</p>
-
-<p>Pellentesque condimentum ex ex, sed tincidunt est dapibus fringilla. In pellentesque dapibus orci, eget ultricies dui lacinia id. Nam eget dictum est, at hendrerit libero. Quisque nulla orci, elementum a massa eu, rutrum sagittis dui. Vivamus venenatis velit odio. Mauris gravida ut tortor eu semper. Ut et tortor aliquet, suscipit quam vel, pulvinar sem. Proin varius erat ipsum, non auctor libero aliquet sed. Aliquam sed orci volutpat, ornare lectus sed, pellentesque ipsum.</p>
-
-<p>Praesent a mattis dolor, sed fermentum erat. Pellentesque nec enim sit amet dui vestibulum imperdiet. Pellentesque vel mi pulvinar sapien suscipit rutrum. In hac habitasse platea dictumst. Integer id gravida dui, ut ornare augue. In vel feugiat ex. Phasellus iaculis ex vitae ante mattis commodo non non nisl. Nam lacinia felis ac nulla faucibus rhoncus. Maecenas nec mauris faucibus ligula dapibus fermentum. Morbi facilisis justo maximus, aliquam neque eu, pulvinar massa. Sed placerat, ex at tempus mollis, massa velit tempor felis, nec efficitur lectus diam vitae dui.</p>
-
-<p>Aliquam vel neque sit amet urna mattis fermentum. Cras pulvinar ligula non felis feugiat, nec rutrum magna dictum. Nam ut magna justo. In at suscipit enim, non tempor massa. Ut viverra sagittis leo. In ac ornare ex, sed fermentum sapien. Etiam ultricies feugiat pretium. Sed finibus eleifend congue.</p>
-
-<p>Donec et dolor at ante egestas facilisis. Maecenas maximus volutpat semper. Sed nulla tellus, sagittis eget pretium hendrerit, consectetur eu nulla. Proin in laoreet magna. Etiam nisl sem, elementum et condimentum ut, imperdiet eget erat. Nunc ornare aliquam cursus. Nunc justo magna, porta at auctor in, facilisis vitae metus. Duis non mauris nec tortor iaculis euismod.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio dolor, laoreet nec maximus ut, interdum non sem. Mauris at efficitur magna. Nam id dolor interdum est consectetur bibendum ut eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras hendrerit dolor quis tellus scelerisque, id hendrerit nisi elementum. Sed sed libero at odio consectetur malesuada. Nulla odio metus, accumsan rutrum pulvinar porttitor, pretium ut massa. Nunc nunc lacus, feugiat sit amet orci nec, vehicula placerat tortor. In facilisis ullamcorper urna. Cras sed lectus et quam accumsan convallis. In hac habitasse platea dictumst. Etiam eu ante in sem aliquet finibus. Suspendisse potenti.</p>
-
-<p>Pellentesque condimentum ex ex, sed tincidunt est dapibus fringilla. In pellentesque dapibus orci, eget ultricies dui lacinia id. Nam eget dictum est, at hendrerit libero. Quisque nulla orci, elementum a massa eu, rutrum sagittis dui. Vivamus venenatis velit odio. Mauris gravida ut tortor eu semper. Ut et tortor aliquet, suscipit quam vel, pulvinar sem. Proin varius erat ipsum, non auctor libero aliquet sed. Aliquam sed orci volutpat, ornare lectus sed, pellentesque ipsum.</p>
-
-<p>Praesent a mattis dolor, sed fermentum erat. Pellentesque nec enim sit amet dui vestibulum imperdiet. Pellentesque vel mi pulvinar sapien suscipit rutrum. In hac habitasse platea dictumst. Integer id gravida dui, ut ornare augue. In vel feugiat ex. Phasellus iaculis ex vitae ante mattis commodo non non nisl. Nam lacinia felis ac nulla faucibus rhoncus. Maecenas nec mauris faucibus ligula dapibus fermentum. Morbi facilisis justo maximus, aliquam neque eu, pulvinar massa. Sed placerat, ex at tempus mollis, massa velit tempor felis, nec efficitur lectus diam vitae dui.</p>
-
-<p>Aliquam vel neque sit amet urna mattis fermentum. Cras pulvinar ligula non felis feugiat, nec rutrum magna dictum. Nam ut magna justo. In at suscipit enim, non tempor massa. Ut viverra sagittis leo. In ac ornare ex, sed fermentum sapien. Etiam ultricies feugiat pretium. Sed finibus eleifend congue.</p>
-
-<p>Donec et dolor at ante egestas facilisis. Maecenas maximus volutpat semper. Sed nulla tellus, sagittis eget pretium hendrerit, consectetur eu nulla. Proin in laoreet magna. Etiam nisl sem, elementum et condimentum ut, imperdiet eget erat. Nunc ornare aliquam cursus. Nunc justo magna, porta at auctor in, facilisis vitae metus. Duis non mauris nec tortor iaculis euismod.</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
