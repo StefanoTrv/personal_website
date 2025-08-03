@@ -193,3 +193,13 @@ $thead-chulapa-bg-color: $secondary !default;
   text-decoration-color: $primary;
   text-decoration-thickness: 2px;
 }
+
+//Home loading wheel
+#loading-wheel{
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* Perfect centering */
+  z-index: 9999;                /* On top of everything */
+  pointer-events: none;         /* Allow clicks through the image */
+}

@@ -358,6 +358,11 @@ window.onload = function () {
     document.getElementById("button-fake-form").addEventListener('click', (event) => {
         sendFakeForm();
     });
+    
+    /*
+      Delete loading wheel
+    */
+    document.getElementById("loading-wheel").remove();
 };
 
 function updateHeader(){
