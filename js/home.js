@@ -108,7 +108,7 @@ window.onload = function () {
         camera.lookAt(0, 0, 0);
     });
     
-    const generalKenobi = new Audio('{{ site.baseurl }}/assets/audio/generalKenobi.mp3');
+    const generalKenobi = new Audio('{{ site.baseurl }}/assets/audio/generalkenobi.mp3');
     generalKenobi.volume = 0.3;
     document.getElementById('hellothere').addEventListener('click', () => {
         generalKenobi.currentTime = 0; // Rewind if already playing
