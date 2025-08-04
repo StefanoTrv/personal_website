@@ -5,16 +5,16 @@ title: Contact
 permalink: /contact
 ---
 
-<script src="js/confetti/tsparticles.confetti.bundle.min.js"></script>
+<script src="{{ 'js/confetti/tsparticles.confetti.bundle.min.js' | relative_url }}"></script>
 
 <div class="text-center pb-4">
-   <img src="assets/img/profile.jpg" alt="My beautiful face" class="rounded-circle zoom" width="300" height="300" onclick="shoot()">
+   <img src="{{ 'assets/img/profile.jpg' | relative_url }}" alt="My beautiful face" class="rounded-circle zoom" width="300" height="300" onclick="shoot()">
 </div>
 
 Want to get in touch? Great! You can find me on <a href="https://www.linkedin.com/in/stefano-travasci/">LinkedIn</a> or reach me by <a href="mailto:stefanotravasci@gmail.com">email</a>.
 
 <div class="text-center">
-   <a href="/" role="button" class="btn btn-secondary mt-3">Back to Home</a>
+   <a href="{{ '/' | relative_url }}" role="button" class="btn btn-secondary mt-3">Back to Home</a>
 </div>
 
 <script>

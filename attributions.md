@@ -14,5 +14,5 @@ Various third party libraries, assets and more were used to make this website. H
 
 
 <div class="d-flex align-items-center justify-content-center my-5">
-   <a href="/" role="button" class="btn btn-secondary">Back to Home</a>
+   <a href="{{ '/' | relative_url }}" role="button" class="btn btn-secondary">Back to Home</a>
 </div>

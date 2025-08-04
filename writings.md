@@ -23,7 +23,7 @@ permalink: /writings
     title = "A GPU-based Parallel Propagator for the Stable Marriage Constraint"
     authors = "Stefano Travasci"
     description = "My Master's Thesis, supervised by prof. Andrea Formisano."
-    abstract = "In this work, a CUDA-based parallel propagator for the Stable Marriage Problem is designed, imple-mented, and integrated into the Minicpp solver. Its performance is compared to a serial propagator basedon the one proposed by Unsworth and Prosser in 2013 [14]. The description of the serial propagatorincludes refinements and corrections to the original version presented in their paper.Appendix B introduces a CUDA-based algorithm for solving the Stable Marriage Problem.All the code used in this work is also available in the repository https://github.com/StefanoTrv/parallel_stable_marriage_constraint."
+    abstract = "In this work, a CUDA-based parallel propagator for the Stable Marriage Problem is designed, imple-mented, and integrated into the Minicpp solver. Its performance is compared to a serial propagator basedon the one proposed by Unsworth and Prosser in 2013 [14]. The description of the serial propagatorincludes refinements and corrections to the original version presented in their paper. Appendix B introduces a CUDA-based algorithm for solving the Stable Marriage Problem. All the code used in this work is also available in the repository https://github.com/StefanoTrv/parallel_stable_marriage_constraint."
     btn_id = "1"
     link1_name = "See on ResearchGate"
     link1_url = "https://www.researchgate.net/publication/391483879_A_GPU-based_Parallel_Propagator_for_the_Stable_Marriage_Constraint"
@@ -46,6 +46,6 @@ permalink: /writings
 %}
 
 <div class="d-flex align-items-center justify-content-center my-5">
-   <a href="/" role="button" class="btn btn-secondary">Back to Home</a>
-   <a href="/portfolio" role="button" class="btn btn-secondary ml-5">Go to Portfolio</a>
+   <a href="{{ '/' | relative_url }}" role="button" class="btn btn-secondary">Back to Home</a>
+   <a href="{{ '/portfolio' | relative_url }}" role="button" class="btn btn-secondary ml-5">Go to Portfolio</a>
 </div>

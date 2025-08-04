@@ -4,14 +4,14 @@ title: Home
 ---
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/><!-- For the CSS animations -->
 
-<script type="module" src="js/home.js"></script>
+<script type="module" src="{{ 'js/home.js' | relative_url }}"></script>
 
-<img src="assets/img/loading_wheel.svg" alt="Loading..." id="loading-wheel">
+<img src="{{ 'assets/img/loading_wheel.svg' | relative_url }}" alt="Loading..." id="loading-wheel">
 
 <section class="home-header">
-    <img src="assets/img/pizza_header_3.png" id="pizza3">
-    <img src="assets/img/pizza_header_2.png" id="pizza2">
-    <img src="assets/img/pizza_header_1.png" id="pizza1">
+    <img src="{{ 'assets/img/pizza_header_3.png' | relative_url }}" id="pizza3">
+    <img src="{{ 'assets/img/pizza_header_2.png' | relative_url }}" id="pizza2">
+    <img src="{{ 'assets/img/pizza_header_1.png' | relative_url }}" id="pizza1">
     <h1 id="header_title" class="animate__animated animate__fadeInUp animate__faster">Stefano Travasci</h1>
 </section>
 
@@ -22,8 +22,8 @@ title: Home
         <h4>
             <span id="hellothere">Hello there!</span> I'm Stefano Travasci. I have a Master's Degree (and a Bachelor’s Degree!) in Computer Science.</br>
             Scroll through this page to learn some of what I do!</br>
-            You can download a more structured and formal CV from <a href="/curriculumvitae">from this page</a>.</br>
-            <a href="/contact">Here</a> you can find the ways to get in contact with me.
+            You can download a more structured and formal CV from <a href="{{ '/curriculumvitae' | relative_url }}">from this page</a>.</br>
+            <a href="{{ '/contact' | relative_url }}">Here</a> you can find the ways to get in contact with me.
         </h4>
       </div>
     </div>
@@ -34,7 +34,7 @@ title: Home
 </section>
 
 <video id="TVvideo" autoplay muted loop playsinline style="display: none">
-  <source src="assets/video/TV_video.mp4" type="video/mp4">
+  <source src="{{ 'assets/video/TV_video.mp4' | relative_url }}" type="video/mp4">
 </video>
 
 <section class="container-fluid m-0 p-0 pt-3 bg-secondary">
@@ -45,7 +45,7 @@ title: Home
     <div class="col-md-7 col-12">
       <div class="p-md-5 p-3 mt-md-5 mr-md-5 text-white">
         <h4>
-            Take a look at <a href="/portfolio">my portfolio page</a> to find a list of (most of) the projects I worked on.</br>
+            Take a look at <a href="{{ '/portfolio' | relative_url }}">my portfolio page</a> to find a list of (most of) the projects I worked on.</br>
             For example, you'll find my many open source libraries for working with ICD codes and the propagator for the Stable Marriage Constraint I developed for my Master's Thesis.</br>
             You can also browse my <a href="https://github.com/StefanoTrv" target="_blank" rel="noopener">Github profile</a>, where most of these projects can be found.
         </h4>
@@ -59,14 +59,14 @@ title: Home
     <div class="col-md-7 col-12">
       <div class="py-md-5 mt-md-5 text-secondary w-75 pr-md-2" style="float: right;">
         <h4>
-          In my <a href="/writings">Writings and Publications page</a> you can find the list of the things I've published.</br>
+          In my <a href="{{ '/writings' | relative_url }}">Writings and Publications page</a> you can find the list of the things I've published.</br>
           Right now it's my Master's Thesis and a couple of papers, but I hope to expand the list soon!
         </h4>
       </div>
     </div>
     <div class="col-md-5 col-12">
       <video id="writingsVideo" autoplay muted loop playsinline class="m-5 mx-md-0">
-        <source src="assets/video/writing_fountain_pen.mp4" type="video/mp4">
+        <source src="{{ 'assets/video/writing_fountain_pen.mp4' | relative_url }}" type="video/mp4">
       </video>
     </div>
   </div>
@@ -76,17 +76,17 @@ title: Home
   <div class="row w-100 p-md-5">
     <div class="col-md-3 col-12 p-4">
       <a id="photo_link_1" href="https://it.wikipedia.org/wiki/Cytisus_decumbens_pindicola" target="_blank" rel="noopener">
-        <img id="photo_box_1" src="assets/img/carousel/foto01.jpg" alt="Flowering Cytisus decumbens pindicola" class="w-100 home-photo-display">
+        <img id="photo_box_1" src="{{ 'assets/img/carousel/foto01.jpg' | relative_url }}" alt="Flowering Cytisus decumbens pindicola" class="w-100 home-photo-display">
       </a>
     </div>
     <div class="col-md-3 col-12 p-4">
       <a id="photo_link_2" href="https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino" target="_blank" rel="noopener">
-        <img id="photo_box_2" src="assets/img/carousel/foto02.jpg" alt="Magredi of San Quirino" class="w-100 home-photo-display">
+        <img id="photo_box_2" src="{{ 'assets/img/carousel/foto02.jpg' | relative_url }}" alt="Magredi of San Quirino" class="w-100 home-photo-display">
       </a>
     </div>
     <div class="col-md-3 col-12 p-4">
       <a id="photo_link_3" href="https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino" target="_blank" rel="noopener">
-        <img id="photo_box_3" src="assets/img/carousel/foto03.jpg" alt="Magredi of San Quirino" class="w-100 home-photo-display">
+        <img id="photo_box_3" src="{{ 'assets/img/carousel/foto03.jpg' | relative_url }}" alt="Magredi of San Quirino" class="w-100 home-photo-display">
       </a>
     </div>
     <div class="col-md-3 col-12">
@@ -110,7 +110,7 @@ title: Home
         <h4>
           Thank you for scrolling through, this is all for now!</br>
           This website does not have a backend, but you can write me an email using this <span class="highlight">fake contact form</span>.</br>
-          For more proper ways to get in touch, check out the <a href="/contact">contact page</a>.
+          For more proper ways to get in touch, check out the <a href="{{ '/contact' | relative_url }}">contact page</a>.
         </h4>
       </div>
     </div>

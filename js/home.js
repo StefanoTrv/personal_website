@@ -1,6 +1,10 @@
-import * as THREE from './threejs/three.module.js';
-import { GLTFLoader } from './threejs/GLTFLoader.js';
-import { RGBELoader } from './threejs/RGBELoader.js';
+---
+layout: null
+---
+const BASEURL = "{{ site.baseurl }}";
+import * as THREE from '{{ site.baseurl }}/js/threejs/three.module.js';
+import { GLTFLoader } from '{{ site.baseurl }}/js/threejs/GLTFLoader.js';
+import { RGBELoader } from '{{ site.baseurl }}/js/threejs/RGBELoader.js';
 
 const graph_node_radius = 25; //Radius in pixel of the graph nodes
 const graph_edge_click_distance = 5; //Maximum distance, in pixels, from a click point to an edge that will count as a click on the edge
@@ -65,7 +69,7 @@ window.onload = function () {
     scene.add(plight);
     
     const pmrem = new THREE.PMREMGenerator(renderer);
-    new RGBELoader().load('../assets/hdr/kiara_interior_1k.hdr', (hdrTexture) => {
+    new RGBELoader().load('{{ site.baseurl }}/assets/hdr/kiara_interior_1k.hdr', (hdrTexture) => {
         const envMap = pmrem.fromEquirectangular(hdrTexture).texture;
         scene.environment = envMap;
         hdrTexture.dispose();
@@ -79,7 +83,7 @@ window.onload = function () {
     let model = null;
     let screen = null;
     const loader_GLTF = new GLTFLoader();
-    loader_GLTF.load('../assets/models/crt_tv.glb', (gltf) => { // load asset and set asset
+    loader_GLTF.load('{{ site.baseurl }}/assets/models/crt_tv.glb', (gltf) => { // load asset and set asset
         model = gltf.scene;
         model.scale.set(5, 5, 5);
         model.rotation.y += 2.8;
@@ -104,7 +108,7 @@ window.onload = function () {
         camera.lookAt(0, 0, 0);
     });
     
-    const generalKenobi = new Audio('../assets/audio/generalKenobi.mp3');
+    const generalKenobi = new Audio('{{ site.baseurl }}/assets/audio/generalKenobi.mp3');
     generalKenobi.volume = 0.3;
     document.getElementById('hellothere').addEventListener('click', () => {
         generalKenobi.currentTime = 0; // Rewind if already playing
@@ -123,7 +127,7 @@ window.onload = function () {
     /*
         Graph thing
     */
-    graph_pointer_icon.src = '../assets/img/Pointing_hand_cursor.png';
+    graph_pointer_icon.src = '{{ site.baseurl }}/assets/img/Pointing_hand_cursor.png';
     const nodes = [
         [0, 1],
         [4, 0],
@@ -314,26 +318,26 @@ window.onload = function () {
       Photo "carousel"
     */
     let photo_array = [
-        ["assets/img/carousel/foto01.jpg", "https://it.wikipedia.org/wiki/Cytisus_decumbens_pindicola", "Flowering Cytisus decumbens pindicola"],
-        ["assets/img/carousel/foto02.jpg", "https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino", "Magredi of San Quirino"],
-        ["assets/img/carousel/foto03.jpg", "https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino", "Magredi of San Quirino"],
-        ["assets/img/carousel/foto04.jpg", "https://it.wikipedia.org/wiki/Pescincanna", "Church of Pescincanna"],
-        ["assets/img/carousel/foto05.jpg", "https://it.wikipedia.org/wiki/Chiesa_di_Sant%27Antonio_Abate_(Pravisdomini)", "Church of Saint Anthony Abbot in Pravisdomini"],
-        ["assets/img/carousel/foto06.jpg", "https://it.wikipedia.org/wiki/Echinopsis_oxygona", "Flowering cactus"],
-        ["assets/img/carousel/foto07.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
-        ["assets/img/carousel/foto08.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
-        ["assets/img/carousel/foto09.jpg", "https://it.wikipedia.org/wiki/Lago_di_Barcis", "Barcis Lake"],
-        ["assets/img/carousel/foto10.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
-        ["assets/img/carousel/foto11.jpg", "https://it.wikipedia.org/wiki/Azzano_Decimo", "Azzano Decimo"],
-        ["assets/img/carousel/foto12.jpg", "https://it.wikipedia.org/wiki/Sacile", "Sacile"],
-        ["assets/img/carousel/foto13.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
-        ["assets/img/carousel/foto14.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
-        ["assets/img/carousel/foto15.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
-        ["assets/img/carousel/foto16.jpg", "https://it.wikipedia.org/wiki/Sacile", "Sacile"],
-        ["assets/img/carousel/foto17.jpg", "https://it.wikipedia.org/wiki/Venezia", "Venice"],
-        ["assets/img/carousel/foto18.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
-        ["assets/img/carousel/foto19.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
-        ["assets/img/carousel/foto20.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"]
+        ["{{ site.baseurl }}/assets/img/carousel/foto01.jpg", "https://it.wikipedia.org/wiki/Cytisus_decumbens_pindicola", "Flowering Cytisus decumbens pindicola"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto02.jpg", "https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino", "Magredi of San Quirino"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto03.jpg", "https://it.wikipedia.org/wiki/Biotopo_magredi_di_San_Quirino", "Magredi of San Quirino"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto04.jpg", "https://it.wikipedia.org/wiki/Pescincanna", "Church of Pescincanna"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto05.jpg", "https://it.wikipedia.org/wiki/Chiesa_di_Sant%27Antonio_Abate_(Pravisdomini)", "Church of Saint Anthony Abbot in Pravisdomini"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto06.jpg", "https://it.wikipedia.org/wiki/Echinopsis_oxygona", "Flowering cactus"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto07.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto08.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto09.jpg", "https://it.wikipedia.org/wiki/Lago_di_Barcis", "Barcis Lake"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto10.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto11.jpg", "https://it.wikipedia.org/wiki/Azzano_Decimo", "Azzano Decimo"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto12.jpg", "https://it.wikipedia.org/wiki/Sacile", "Sacile"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto13.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto14.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto15.jpg", "https://it.wikipedia.org/wiki/Risorgive_del_Vinchiaruzzo", "Risorgive del Vinchiaruzzo"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto16.jpg", "https://it.wikipedia.org/wiki/Sacile", "Sacile"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto17.jpg", "https://it.wikipedia.org/wiki/Venezia", "Venice"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto18.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto19.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto20.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"]
     ];
     
     randomizePhoto(1, photo_array);
