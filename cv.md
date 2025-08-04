@@ -11,12 +11,12 @@ On this page, you can download my CV in both Italian and English. Please note th
 	<div class="row">
 		<div class="col">
 			<a href="{{site.url}}{{site.baseurl}}/download/Stefano_Travasci_CV_it.pdf">
-				<img src="assets/img/pdf_icon_it.png" class="img-fluid zoom" alt="Download Italian CV" width="130">
+				<img src="{{ '/assets/img/pdf_icon_it.png' | relative_url }}" class="img-fluid zoom" alt="Download Italian CV" width="130">
 			</a>
 		</div>
 		<div class="col">
 			<a href="{{site.url}}{{site.baseurl}}/download/Stefano_Travasci_CV_en.pdf">
-				<img src="assets/img/pdf_icon_en.png" class="img-fluid zoom" alt="Download English CV" width="130">
+				<img src="{{ '/assets/img/pdf_icon_en.png' | relative_url }}" class="img-fluid zoom" alt="Download English CV" width="130">
 			</a>
 		</div>
 	</div>
