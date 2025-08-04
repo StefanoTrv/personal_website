@@ -35,5 +35,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 # Chulapa theme
 gem "chulapa-jekyll"
 
-# No idea where this is from, but the project uses it and it won't a default gem in the future
+# No idea where this is from, but the project uses it and it won't be a default gem in the future
 gem "fiddle"
