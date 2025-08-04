@@ -25,7 +25,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://stefanotravasci.it" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  StefanoTrv
 timezone: Europe/Rome
-#og_image: TODO
+og_image: /assets/img/OGImage.jpg
 
 author:
   name : Stefano Travasci
