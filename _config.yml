@@ -172,5 +172,3 @@ sass:
 
 exclude:
     - other/
-    - assets/js/LICENSE
-    - assets/js/tsparticles.confetti.bundle.min.js.LICENSE

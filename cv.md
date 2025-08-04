@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: gdefault
 header_type: base
 title: Curriculum Vitae
 permalink: /curriculumvitae
