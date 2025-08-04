@@ -1,5 +1,5 @@
 ---
-layout: gdefault
+layout: default
 header_type: base
 title: Attributions
 permalink: /attributions
