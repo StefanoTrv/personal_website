@@ -1,7 +1,6 @@
 ---
 layout: null
 ---
-const BASEURL = "{{ site.baseurl }}";
 import * as THREE from '{{ site.baseurl }}/js/threejs/three.module.js';
 import { GLTFLoader } from '{{ site.baseurl }}/js/threejs/GLTFLoader.js';
 import { RGBELoader } from '{{ site.baseurl }}/js/threejs/RGBELoader.js';
