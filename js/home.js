@@ -76,21 +76,30 @@ window.onload = function () {
     });
     
     const video = document.getElementById('TVvideo');
-    const videoTexture = new THREE.VideoTexture(video);
-    videoTexture.colorSpace = THREE.SRGBColorSpace;
     
-    let model = null;
-    let screen = null;
-    const loader_GLTF = new GLTFLoader();
-    loader_GLTF.load('{{ site.baseurl }}/assets/models/crt_tv.glb', (gltf) => { // load asset and set asset
-        model = gltf.scene;
-        model.scale.set(5, 5, 5);
-        model.rotation.y += 2.8;
-        model.position.set(0,-1.175,0);
-        screen = model.getObjectByName('defaultMaterial_3');
-        scene.add(gltf.scene);
-        screen.material.map = videoTexture;           
-        screen.material.needsUpdate = true;
+    video.addEventListener('canplay', () => {
+        const videoTexture = new THREE.VideoTexture(video);
+        videoTexture.colorSpace = THREE.SRGBColorSpace;
+        
+        let model = null;
+        let screen = null;
+        const loader_GLTF = new GLTFLoader();
+        loader_GLTF.load('{{ site.baseurl }}/assets/models/crt_tv.glb', (gltf) => { // load asset and set asset
+            model = gltf.scene;
+            model.scale.set(5, 5, 5);
+            model.rotation.y += 2.8;
+            model.position.set(0,-1.175,0);
+            screen = model.getObjectByName('defaultMaterial_3');
+            scene.add(gltf.scene);
+            screen.material.map = videoTexture;           
+            screen.material.needsUpdate = true;
+        });
+    });
+
+    // Force Chrome to start loading the video
+    video.load();
+    video.play().catch((e) => {
+        console.warn('Autoplay blocked:', e);
     });
     
     window.addEventListener('mousemove', (event) => { // rotate camera with cursor
