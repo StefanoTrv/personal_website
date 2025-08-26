@@ -1,10 +1,10 @@
-<div class="mx-3 my-5">
-    <div class="text-my-gray mx-2 px-2"> {{ include.type }} - {{ include.date }} </div>
+<div class="mx-md-3 my-5">
+    <div class="text-my-gray mx-md-2 px-2"> {{ include.type }} - {{ include.date }} </div>
     <h3 class="m-0"> {{ include.title }} </h3>
-    <div class="font-weight-bold text-my-gray mx-2 px-2 border-left"> {{ include.authors }} </div>
-    <div class="mx-2 px-2 pb-1 border-left"> {{ include.description }}</div>
+    <div class="font-weight-bold text-my-gray mx-md-2 px-2 border-left"> {{ include.authors }} </div>
+    <div class="mx-md-2 pl-2 pb-1 border-left"> {{ include.description }}</div>
     {% if include.abstract %}
-        <div class="mx-2 px-2 pb-1 border-left">
+        <div class="mx-md-2 pl-2 pb-1 border-left">
             <button type="button" id="abstract-button-{{ include.btn_id }}" class="btn btn-link p-0" data-toggle="collapse" data-target="#abstract-section-{{ include.btn_id }}" aria-expanded="false" aria-controls="abstract-section-{{ include.btn_id }}">
                 Abstract <i id="abstract-chevron-up-{{ include.btn_id }}" class="fa-solid fa-chevron-up"></i><i id="abstract-chevron-down-{{ include.btn_id }}" class="fa-solid fa-chevron-down"></i>
             </button>
@@ -13,7 +13,7 @@
             </div>
         </div>
     {% endif %}
-    <div class="mx-2 px-2 pt-1 border-left">
+    <div class="mx-md-2 pl-2 pt-1 border-left">
         {% if include.link1_url %}
             <span class="font-weight-bold text-my-gray">Available online:<br></span>
             <a href="{{ include.link1_url }}" class="ml-2 text-info" target="_blank" rel="noopener">{{ include.link1_name }}</a>

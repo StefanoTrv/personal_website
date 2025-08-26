@@ -117,12 +117,24 @@ $thead-chulapa-bg-color: $secondary !default;
     z-index: 100;
 }
 
+@media (max-width: 600px) { /* Left margin for small screens*/
+  #header_title {
+    margin-left: 5%;
+  }
+}
+
 .home-header img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     pointer-events: none;
+}
+
+@media (max-width: 600px) { /* Move images down for small screens*/
+  .home-header img {
+    top: 70vh;
+  }
 }
 
 // Homepage personal photos
