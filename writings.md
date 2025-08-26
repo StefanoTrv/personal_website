@@ -12,9 +12,11 @@ permalink: /writings
     authors = "Stefano Travasci, Fabio Tardivo, Andrea Formisano"
     description = "Conference paper derived from my Master's thesis.<br>
                    I personally presented this paper at <a href=\"https://cilc2025.github.io/\" target=\"_blank\" rel=\"noopener\">CILC-2025</a> in Alghero in June 2025.<br>
-                   Awaiting publication in the Proceedings of CILC-2025."
+                   Published in the <a href=\"https://ceur-ws.org/Vol-4003/\" target=\"_blank\" rel=\"noopener\">Proceedings of the 40th Italian Conference on Computational Logic</a>, June 2025, vol. 4003."
     abstract = "The Stable Marriage Problem (SMP) consists of finding a stable matching between two equally sized disjoint sets, typically referred to as men and women, based on individual preference lists. A matching is stable if no man and woman prefer each other over their assigned partners. The Gale–Shapley algorithm is the classical polynomial-time solution to this problem. In Constraint Programming (CP), the Stable Marriage Constraint (SMC) encapsulates this problem as a global constraint, with a consistency-enforcing propagator derived from an extended version of the Gale–Shapley algorithm. In this paper, we present a GPU-accelerated propagator for the SMC and its integration into a CP solver. Experimental results against the sequential version demonstrate the potential of GPU acceleration in handling large instances of the stable marriage constraint."
     btn_id = "2"
+    link1_name = "Download from CEUR-WS.org"
+    link1_url = "https://ceur-ws.org/Vol-4003/paper14.pdf"
 %}
 
 {% include publication_template.html
