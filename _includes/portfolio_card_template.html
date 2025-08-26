@@ -6,12 +6,12 @@
             <p class="card-text">{{ include.text }}</p>
             <div class="mt-auto">
                 {% if include.txt_btn_1 %}
-                    <a href="{{ include.url_btn_1 }}" class="btn btn-portfolio-link mr-2" target="_blank" rel="noopener">{{ include.txt_btn_1 }}</a>
+                    <a href="{{ include.url_btn_1 }}" class="btn btn-portfolio-link mr-2 mb-1" target="_blank" rel="noopener">{{ include.txt_btn_1 }}</a>
                 {% else %}
                     <span class="font-weight-bold">Not available online.</span>
                 {% endif %}
                 {% if include.txt_btn_2 %}
-                    <a href="{{ include.url_btn_2 }}" class="btn btn-portfolio-link" target="_blank" rel="noopener">{{ include.txt_btn_2 }}</a>
+                    <a href="{{ include.url_btn_2 }}" class="btn btn-portfolio-link mb-1" target="_blank" rel="noopener">{{ include.txt_btn_2 }}</a>
                 {% endif %}
             </div>
         </div>
