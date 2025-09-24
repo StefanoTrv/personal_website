@@ -345,7 +345,10 @@ window.onload = function () {
         ["{{ site.baseurl }}/assets/img/carousel/foto17.jpg", "https://it.wikipedia.org/wiki/Venezia", "Venice"],
         ["{{ site.baseurl }}/assets/img/carousel/foto18.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
         ["{{ site.baseurl }}/assets/img/carousel/foto19.jpg", "https://it.wikipedia.org/wiki/Stazione_di_Cusano", "Cusano railway station"],
-        ["{{ site.baseurl }}/assets/img/carousel/foto20.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"]
+        ["{{ site.baseurl }}/assets/img/carousel/foto20.jpg", "https://it.wikipedia.org/wiki/Andreis", "Andreis"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto21.jpg", "https://en.wikipedia.org/wiki/Florence_Cathedral", "Florence Cathedral"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto22.jpg", "https://en.wikipedia.org/wiki/Florence_Cathedral", "Florence Cathedral"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto23.jpg", "https://en.wikipedia.org/wiki/Uffizi", "The Uffizi Gallery"]
     ];
     
     randomizePhoto(1, photo_array);
