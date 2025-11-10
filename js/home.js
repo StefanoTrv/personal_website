@@ -350,7 +350,8 @@ window.onload = function () {
         ["{{ site.baseurl }}/assets/img/carousel/foto22.jpg", "https://en.wikipedia.org/wiki/Florence_Cathedral", "Florence Cathedral"],
         ["{{ site.baseurl }}/assets/img/carousel/foto23.jpg", "https://en.wikipedia.org/wiki/Uffizi", "The Uffizi Gallery"],
         ["{{ site.baseurl }}/assets/img/carousel/foto24.jpg", "https://en.wikipedia.org/wiki/Riva_del_Garda", "Riva del Garda"],
-        ["{{ site.baseurl }}/assets/img/carousel/foto25.jpg", "https://it.wikipedia.org/wiki/Forni_di_Sopra", "Mountains near Forni di Sopra"]
+        ["{{ site.baseurl }}/assets/img/carousel/foto25.jpg", "https://it.wikipedia.org/wiki/Forni_di_Sopra", "Mountains near Forni di Sopra"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto26.jpg", "https://en.wikipedia.org/wiki/Urbino", "Urbino seen from its Ducal Palace"]
     ];
     
     randomizePhoto(1, photo_array);
