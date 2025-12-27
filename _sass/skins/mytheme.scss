@@ -215,3 +215,13 @@ $thead-chulapa-bg-color: $secondary !default;
   z-index: 9999;                /* On top of everything */
   pointer-events: none;         /* Allow clicks through the image */
 }
+
+//75% width in large screens, 90% otherwise
+.w-75or90{
+    width: 75%;
+}
+@media (max-width: 767px) {
+  .w-75or90 {
+    width: 90%;
+  }
+}
