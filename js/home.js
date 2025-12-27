@@ -273,7 +273,7 @@ window.onload = function () {
             }
         }
         
-        if (was_changed || graph_highlight_edge){ //Resets and redraws if some edge was changed
+        if (was_changed){ //Resets and redraws if some edge was changed
             graph_highlight_edge = false;
             resetGraphVisit(nodes, edges, node_colors, node_colors_original, edge_status, free_nodes, edge_stack, colors, colors_original);
             drawGraph(ctx, nodes, node_colors, edges, edge_status, graphcanvas);
