@@ -360,7 +360,8 @@ window.onload = function () {
         ["{{ site.baseurl }}/assets/img/carousel/foto32.jpg", "https://en.wikipedia.org/wiki/Lake_dei_Tramonti", "Tramonti Lake"],
         ["{{ site.baseurl }}/assets/img/carousel/foto33.jpg", "https://it.wikipedia.org/wiki/Tramonti_di_Sotto", "The town hall in Tramonti di Sotto"],
         ["{{ site.baseurl }}/assets/img/carousel/foto34.jpg", "https://it.wikipedia.org/wiki/Chiesa_di_Santa_Maria_Maggiore_(Tramonti_di_Sotto)", "The Santa Maria Maggiore church in Tramonti di Sotto"],
-        ["{{ site.baseurl }}/assets/img/carousel/foto35.jpg", "https://en.wikipedia.org/wiki/Lake_dei_Tramonti", "Tramonti Lake"]
+        ["{{ site.baseurl }}/assets/img/carousel/foto35.jpg", "https://en.wikipedia.org/wiki/Lake_dei_Tramonti", "Tramonti Lake"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto36.jpg", "https://it.wikipedia.org/wiki/Meduna", "Meduna river in Tramonti di Sotto"]
     ];
     
     randomizePhoto(1, photo_array);
