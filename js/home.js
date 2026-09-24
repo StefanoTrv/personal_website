@@ -353,7 +353,14 @@ window.onload = function () {
         ["{{ site.baseurl }}/assets/img/carousel/foto25.jpg", "https://it.wikipedia.org/wiki/Forni_di_Sopra", "Mountains near Forni di Sopra"],
         ["{{ site.baseurl }}/assets/img/carousel/foto26.jpg", "https://en.wikipedia.org/wiki/Urbino", "Urbino seen from its Ducal Palace"],
         ["{{ site.baseurl }}/assets/img/carousel/foto27.jpg", "https://en.wikipedia.org/wiki/Cesta,_San_Marino", "The Seconda Torre in San Marino"],
-        ["{{ site.baseurl }}/assets/img/carousel/foto28.jpg", "https://en.wikipedia.org/wiki/Guaita", "The Prima Torre in San Marino"]
+        ["{{ site.baseurl }}/assets/img/carousel/foto28.jpg", "https://en.wikipedia.org/wiki/Guaita", "The Prima Torre in San Marino"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto29.jpg", "https://it.wikipedia.org/wiki/Chievolis", "Chievolis, Tramonti di Sopra"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto30.jpg", "https://it.wikipedia.org/wiki/Chievolis", "The new bridge in Chievolis, Tramonti di Sopra"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto31.jpg", "https://it.wikipedia.org/wiki/Chievolis", "Chievolis, Tramonti di Sopra"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto32.jpg", "https://en.wikipedia.org/wiki/Lake_dei_Tramonti", "Tramonti Lake"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto33.jpg", "https://it.wikipedia.org/wiki/Tramonti_di_Sotto", "The town hall in Tramonti di Sotto"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto34.jpg", "https://it.wikipedia.org/wiki/Chiesa_di_Santa_Maria_Maggiore_(Tramonti_di_Sotto)", "The Santa Maria Maggiore church in Tramonti di Sotto"],
+        ["{{ site.baseurl }}/assets/img/carousel/foto35.jpg", "https://en.wikipedia.org/wiki/Lake_dei_Tramonti", "Tramonti Lake"]
     ];
     
     randomizePhoto(1, photo_array);
